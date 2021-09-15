@@ -15,17 +15,20 @@ public static void main(String[] args) throws IOException{
 
  int opcion;
 
- System.out.println("Simulador de memoria RAM");
+ System.out.println("--------------Simulador de memoria RAM--------------");
  System.out.println("¿Qué desea hacer?");
  opcion = vista.menu();
 
     /**
-	  * Ciclo mientras la opcion no sea 0 que es salir, sigue corriendo.
+	  * Ciclo mientras la opcion no sea 8 que es salir, sigue corriendo.
 	  **/
-	  while(opcion != 7){
+	  while(opcion != 8){
 	    switch(opcion)
 	    {
-            case 1: 
+            case 1:
+             if (vista.getTipo().equals("SDR")){
+                 
+             }
             break;
             case 2:
             break;
