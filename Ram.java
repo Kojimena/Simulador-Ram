@@ -25,12 +25,12 @@ public class Ram {
         for(int i=0; i<this.bloques; i++){
             sdr.add(null);
         }
-        vista.mensaje(("####"));
-            for (int i=0; i<sdr.size(); i++){
-            System.out.println(sdr.get(i));
-            }
-        vista.mensaje(("##tamaño###"));
-            System.out.println(sdr.size());
+        //*vista.mensaje(("####"));
+           // for (int i=0; i<sdr.size(); i++){
+          //  System.out.println(sdr.get(i));
+          //  }
+        //vista.mensaje(("##tamaño###"));
+           // System.out.println(sdr.size());
     }
 
     Ram(){
@@ -42,11 +42,11 @@ public class Ram {
             ddr.add(null);
         }
         //vista.mensaje(("####"));
-            for (int i=0; i<ddr.size(); i++){
-            System.out.println(ddr.get(i));
-            }
+            //for (int i=0; i<ddr.size(); i++){
+            //System.out.println(ddr.get(i));
+            //}
         //vista.mensaje(("#####"));
-            System.out.println(ddr.size());
+            //System.out.println(ddr.size());
     }
 
     public void añadirPro(Programas programs)throws ArithmeticException{
@@ -66,8 +66,8 @@ public class Ram {
                 if(sdr.get(i) == null)
                 bloqueslibres++;
             }
-            System.out.println("Espacio libre"+ bloqueslibres);
-            System.out.println("Bloques programas"+ bloquesnprograma);
+            System.out.println("Espacio libre"+ " "+ bloqueslibres + " " + "bloques");
+            System.out.println("Bloques programas"+" "+ bloquesnprograma + " " + "bloques");
             if(bloquesnprograma<= bloqueslibres){
                 for(int i= 0; i < sdr.size() && bloquesnprograma != 0; i++){
                     if (sdr.get(i) == null){
@@ -79,6 +79,7 @@ public class Ram {
                 System.out.println(sdr);
             }else if (bloquesnprograma > bloqueslibres){
                 cola.add(programs);
+                System.out.println("cola"+ cola);
             }
             
         }else if ((sisdr) == false){
@@ -93,8 +94,8 @@ public class Ram {
                 if(ddr.get(i) == null)
                 bloqueslibres++;
             }
-            System.out.println("Espacio libre"+" " + bloqueslibres);
-            System.out.println("Bloques programas"+ " " + bloquesnprograma);
+            System.out.println("Espacio libre"+" " + bloqueslibres+ " " + "bloques");
+            System.out.println("Bloques programas"+ " " + bloquesnprograma+ " " + "bloques");
             if(bloquesnprograma<= bloqueslibres){
                 for(int i= 0; i < ddr.size() && bloquesnprograma != 0; i++){
                     if (ddr.get(i) == null){
@@ -108,6 +109,66 @@ public class Ram {
         }
     }
 
-    
+    public ArrayList<String>getColapro(){
+        ArrayList<String>colaString = new ArrayList<String>();
+        for (int i =0; i< cola.size(); i++){
+            Programas c_reciente = cola.get(i);
+            if (c_reciente != null){
+                String c_String = "Programa número" + (i+1) + " N: " + c_reciente.getNombre() +" T: "+ c_reciente.getTiempo()+" E: "+c_reciente.getEspacio()+ "\n";
+                colaString.add(c_String);
+            }
+
+        }
+
+        if (colaString.size()<=0){
+            System.out.println("No tiene programas en cola");
+        }
+
+        return colaString;
+    }
+
+    public ArrayList<String>getDatos(){
+        ArrayList<String> datos = new ArrayList<String>();
+        int ramEnuso = 0;
+        int ramTotal = this.bloques*64;
+        int ramdisponible;
+
+        ArrayList<Programas> prog = new ArrayList<Programas>();
+        if ((sisdr) == true){
+            for(int i=0; i<sdr.size(); i++){
+                Programas estePrograma = sdr.get(i);
+
+                if(prog != null){
+                    if(!(prog.contains(estePrograma))){
+                    prog.add(estePrograma);
+                    ramEnuso = i;
+                    }
+                }
+            }
+        }else if((sisdr) == false) {
+            for(int i=0; i<ddr.size(); i++){
+                Programas estePrograma = ddr.get(i);
+                if(prog != null){
+                    if(!(prog.contains(estePrograma))){
+                    prog.add(estePrograma);
+                    ramEnuso = i;
+                }    }
+            }
+        }
+        ramdisponible = ramTotal-ramEnuso;
+
+        String ramuso = "RAM usada:"+ " " + ramEnuso + " " + "bloques";
+        String ramdisp = "RAM disponible:"+ " " + ramdisponible+ " " + "bloques";
+        String ramtotal= "RAM total:"+ " " + ramTotal+ " " + "bloques";
+
+        datos.add(ramuso);
+        datos.add(ramdisp);
+        datos.add(ramtotal);
+
+        return datos;
+
+    }
+
+
 
 }

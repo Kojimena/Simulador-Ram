@@ -5,6 +5,7 @@
 * Esta clase es la vista del programa.Imprime resultados y pide datos.
 **/
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -39,6 +40,13 @@ public class Vista {
 
     public void mensaje(String mensaje){
         System.out.println(mensaje);
+    }
+
+    public void mensaje(ArrayList<String> mensajearray){
+        for (int i = 0; i<mensajearray.size(); i++){
+            System.out.println(mensajearray.get(i));
+        }
+        
     }
 
     public String getNombre(){
