@@ -5,6 +5,7 @@
 * Esta clase es la vista del programa.Imprime resultados y pide datos.
 **/
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Vista {
@@ -22,7 +23,16 @@ public class Vista {
                 System.out.println("7. Nuevo ciclo de reloj");
                 System.out.println("8. Salir");
                 System.out.print("Seleccion: ");
-		opcion = scan.nextInt();
+            try {
+                opcion = scan.nextInt();
+            
+            } catch (InputMismatchException e) {
+                mensaje("Porfavor, ingrese una opción válida");
+                Scanner scan = new Scanner(System.in);
+                opcion = scan.nextInt();
+            
+            }
+        
 		scan.nextLine();
 		return opcion;
     }
@@ -42,7 +52,7 @@ public class Vista {
     public int getEspacio(){
 
         System.out.printf("\nIngrese el espacio del programa ");
-
+        
         int espacio = scan.nextInt();
 
         return espacio;
@@ -61,9 +71,27 @@ public class Vista {
 
         System.out.printf("\nIngrese el tipo de memoria RAM (SDR O DDR)");
 
-        String tipo = scan.nextLine();
+        String tipo = scan.nextLine().toUpperCase();
 
         return tipo;
+    }
+
+    public int getTamGB(){
+
+        System.out.printf("\nIngrese el tamaño de su memoria SDR: (4, 8, 12, 16, 32, 64)");
+
+        int tamgb = scan.nextInt();
+
+        return tamgb;
+    }
+
+    public int getAnswer(){
+
+        System.out.printf("\n¿Quiere agregar más programas?\n 1.Si \n 2.No\n");
+
+        int seguir = scan.nextInt();
+
+        return seguir;
     }
 
 

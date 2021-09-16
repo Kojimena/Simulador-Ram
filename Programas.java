@@ -17,6 +17,13 @@ public class Programas {
         this.espacio = espacio;
     }
 
+    public Programas(){
+        nombre = "";
+        tiempoejecucion= 0;
+        espacio= 0;
+    }
+
+
     /**
     * @param null
     * @return nombre
@@ -42,7 +49,11 @@ public class Programas {
     }
 
 
-
+    @Override
+    public String toString() {
+        return   " " + nombre + " " + tiempoejecucion+ " " + espacio;
+        //return "Programas:" + "\nnombre: " + nombre + " \ntiempo ejecucion: " + tiempoejecucion + "\n espacio: " + espacio;
+    }
 
 
     
