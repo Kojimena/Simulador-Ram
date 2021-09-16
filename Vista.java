@@ -56,6 +56,7 @@ public class Vista {
         int espacio = scan.nextInt();
 
         return espacio;
+        
     }
 
     public int getTiempo(){
@@ -90,6 +91,7 @@ public class Vista {
         System.out.printf("\n¿Quiere agregar más programas?\n 1.Si \n 2.No\n");
 
         int seguir = scan.nextInt();
+        scan.nextLine();
 
         return seguir;
     }
