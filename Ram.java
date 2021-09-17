@@ -159,17 +159,18 @@ public class Ram {
                     if(!(prog.contains(estePrograma))){
                     prog.add(estePrograma);
                     ramEnuso = i;
-                }    }
+                    }    
+                }
+
             }
         }
-        ramdisponible = ramTotal-ramEnuso; //Se resta la ram total - la que se usa 
-
+    
         String ramuso = "RAM usada:"+ " " + ramEnuso + " " + "bloques";
-        String ramdisp = "RAM disponible:"+ " " + ramdisponible+ " " + "bloques";
-        String ramtotal= "RAM total:"+ " " + ramTotal+ " " + "bloques";
-
         datos.add(ramuso);
+        ramdisponible = ramTotal-ramEnuso; //Se resta la ram total - la que se usa 
+        String ramdisp = "RAM disponible:"+ " " + ramdisponible+ " " + "bloques";
         datos.add(ramdisp);
+        String ramtotal= "RAM total:"+ " " + ramTotal+ " " + "bloques";
         datos.add(ramtotal); //se añaden los Strings al Array de Strings
 
         return datos;
