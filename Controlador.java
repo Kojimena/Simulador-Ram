@@ -21,7 +21,6 @@ ManipulacionArchivo archivos = new ManipulacionArchivo("registros.txt");
 
  int opcion;
 
-archivos.leerarch();
 
  vista.mensaje("--------------Simulador de memoria RAM--------------");
  vista.mensaje("¿Qué desea hacer?");
@@ -35,6 +34,18 @@ archivos.leerarch();
 	while(opcion != 8){
 	    switch(opcion)
 	    {
+            case 0:
+            try {
+            ArrayList<Programas> pArchivo = archivos.manipulacion(archivos.leerarch());
+                for (int i = 0; i < pArchivo.size(); i++){
+                ram.añadirPro(pArchivo.get(i));
+                vista.mensaje("Se ha leído el archivo correctamente");
+                } 
+            }catch (ArithmeticException e) {
+            vista.mensaje("No se pudo procesar el archivo: ");
+            }
+
+            break;
             case 1:
             //Elegir tipo
              if (vista.getTipo().equals("SDR")){
@@ -88,10 +99,7 @@ archivos.leerarch();
 
             case 5:
             //conocer espacios
-            ArrayList<Programas> espaciosRam = ram.getEspacios();
-            for(int i=0; i<espaciosRam.size(); i++){
-                System.out.println(espaciosRam.get(i));
-            }
+            System.out.println(ram.getEspacios());
             
             break;
 

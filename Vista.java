@@ -14,7 +14,7 @@ public class Vista {
 
     public int menu(){
 		int opcion;
-
+                System.out.println("0. Inicializar con archivo .txt");
                 System.out.println("1. Inicializar");
                 System.out.println("2. Ingresar Programas");
                 System.out.println("3. Cantidad de memoria RAM");
@@ -103,6 +103,17 @@ public class Vista {
 
         return seguir;
     }
+
+    public String getPro(){
+
+        System.out.printf("\nIngrese el nombre del programa que busca");
+
+        String name = scan.nextLine();
+
+        return name;
+    }
+
+    
 
 
 }

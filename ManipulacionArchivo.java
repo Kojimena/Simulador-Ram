@@ -14,6 +14,8 @@ public class ManipulacionArchivo {
     PrintWriter linea;
     BufferedReader almacenamiento;
     String texto;
+    Ram ram = new Ram();
+    Programas program = new Programas();
     
     public ManipulacionArchivo(String miArchivo){
         /**
@@ -62,8 +64,6 @@ public class ManipulacionArchivo {
         }catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(texto);
-        //System.out.println(Arrays.toString(lines));
         return texto;
     }
     
@@ -82,6 +82,18 @@ public class ManipulacionArchivo {
                 e.printStackTrace();
             }
         }
+    }
+
+    public ArrayList<Programas>manipulacion(String texto){
+        ArrayList<Programas> programsArrayList = new ArrayList<Programas>();
+        String[] parts = texto.split(",");
+        String name = parts[0]; 
+        int time = Integer.parseInt(parts[1]);  
+        int space= Integer.parseInt(parts[2]);
+        Programas eProgramas = new Programas(name, time, space);
+        programsArrayList.add(eProgramas);
+        return programsArrayList;
+
     }
     
 }
