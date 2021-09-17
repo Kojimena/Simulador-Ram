@@ -47,34 +47,7 @@ public class ManipulacionArchivo {
         }
     }
 
-    /**
-    * Lee los programas provistos en el archivo de texto
-    * @return Objetos de Programa, creados con la información del archivo
-    */
-    public ArrayList<Programas> leer() throws IOException{
-        ArrayList<String> pString = new ArrayList<String>();
-        ArrayList<Programas> programas = new ArrayList<Programas>();
-
-        Scanner myReader = new Scanner(archivo);
-        while (myReader.hasNextLine()) {
-            String localData = myReader.nextLine();
-            pString.add(localData);  // Una línte entera representa la información de un programa
-        }
-        myReader.close();
-
-        for (int i = 0; i < pString.size(); i++) {
-            ArrayList<String> linea = new ArrayList<String>(Arrays.asList(pString.get(i).split(",")));
-            String nombre = linea.get(0);
-            int tiempo = Integer.parseInt(linea.get(1));
-            int memoria = Integer.parseInt(linea.get(2));
-            Programas nuevoPrograma = new Programas(nombre, tiempo, memoria);
-            programas.add(nuevoPrograma);
-        }
-
-        return programas;
-    }
-    
-    
+ 
     public String leerarch(){
         /**
          * Funcion que permite leer el contenido del archivo
@@ -89,6 +62,8 @@ public class ManipulacionArchivo {
         }catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        System.out.println(texto);
+        //System.out.println(Arrays.toString(lines));
         return texto;
     }
     
