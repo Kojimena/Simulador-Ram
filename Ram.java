@@ -227,38 +227,96 @@ public class Ram {
         
         return bloquesNecesarios;
     }
-    //public void nuevoCiclo(){
-       // ArrayList<Programas> prog = new ArrayList<Programas>();
-      //  if ((sisdr) == true){
-        //    for(int i=0; i<sdr.size(); i++){
-        //            prog.add(null);
-        //    }
-         //   sdr = prog;
-         //   System.out.println(sdr);
-        //}else if((sisdr) == false) {
-        //    for(int i=0; i<ddr.size(); i++){
-       //         prog.add(null);
-       // }
-       // vista.mensaje("Ciclo terminado");
-       // sdr = prog;
-       // }
 
-    //}
-
-    /**
-    *public void ejecutarnuevoCiclo(){
+    public void ejecutarnuevoCiclo(){
+        if ((sisdr) == true){
         if (sdr.get(0) != null) { 
-            boolean ejecucionPrograma = sdr.get(0).ejecutar();
-            if (ejecucionPrograma){
+            boolean programEj = sdr.get(0).ejecutar();
+            if (programEj){
                 // El programa ya finalizó su ejecución.
 
                 // Eliminación de los bloques de memoria
                 ArrayList<Programas> prog = new ArrayList<Programas>();
                 Programas programaac = sdr.get(0);
-                programaac.bloquesNecesarios();
+                int bloquesUsados = bloquesNecesarios(programaac);
+                for (int j = 0; j < bloquesUsados; j++) {
+                    for (int i = 0; i < sdr.size(); i++) {
+                        sdr.remove(i);
+                    }
+                }
+                // Eliminación de la cola. Se eliminan todos los programas que tengan tiempo 0
+                for (int i = 0; i < cola.size(); i++) {
+                    if(cola.get(i).getTiempo() == 0){
+                        cola.remove(i);
+                    }
+                }
             }    
         }
+        // Adición de programas en cola a la memoria
+        ArrayList<Programas> pTransfer = new ArrayList<Programas>();
+        for (int i = 0; i < cola.size(); i++) {
+            int bloquesLibres = 0;
+            Programas pCola = cola.get(i);
+    
+            for (int j = 0; j < sdr.size(); j++) {
+                if(sdr.get(j) == null){
+                    bloquesLibres++;
+                }
+            }            
+
+            if(bloquesLibres >= bloquesNecesarios(pCola)){
+                añadirPro(pCola);
+                pTransfer.add(pCola);
+            }
+        }
+        for (int i = 0; i < pTransfer.size(); i++) {
+            cola.remove(pTransfer.get(i));
+        }
+        }else if((sisdr) == false){
+            if (ddr.get(0) != null) { 
+                boolean programEj = ddr.get(0).ejecutar();
+                if (programEj){
+                    // El programa ya finalizó su ejecución.
+    
+                    // Eliminación de los bloques de memoria
+                    ArrayList<Programas> prog = new ArrayList<Programas>();
+                    Programas programaac = ddr.get(0);
+                    int bloquesUsados = bloquesNecesarios(programaac);
+                    for (int j = 0; j < bloquesUsados; j++) {
+                        for (int i = 0; i < ddr.size(); i++) {
+                            ddr.remove(i);
+                        }
+                    }
+                    // Eliminación de la cola. Se eliminan todos los programas que tengan tiempo 0
+                    for (int i = 0; i < cola.size(); i++) {
+                        if(cola.get(i).getTiempo() == 0){
+                            cola.remove(i);
+                        }
+                    }
+                }    
+            }
+            // Adición de programas en cola a la memoria
+            ArrayList<Programas> pTransfer = new ArrayList<Programas>();
+            for (int i = 0; i < cola.size(); i++) {
+                int bloquesLibres = 0;
+                Programas programaEnCola = cola.get(i);
         
-    }*/
+                for (int j = 0; j < ddr.size(); j++) {
+                    if(ddr.get(j) == null){
+                        bloquesLibres++;
+                    }
+                }            
+    
+                if(bloquesLibres >= bloquesNecesarios(programaEnCola)){
+                    añadirPro(programaEnCola);
+                    pTransfer.add(programaEnCola);
+                }
+            }
+            for (int i = 0; i < pTransfer.size(); i++) {
+                cola.remove(pTransfer.get(i));
+            }
+        }
+
+    }
 
 }
