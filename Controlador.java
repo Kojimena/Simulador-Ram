@@ -21,20 +21,6 @@ ManipulacionArchivo archivos = new ManipulacionArchivo("registros.txt");
 
  int opcion;
 
- // Ingreso de programas por medio de un archivo de texto
- /**try {
-    ArrayList<Programas> programasArchivo = archivos.leer();
-    for (int i = 0; i < programasArchivo.size(); i++) {
-        ram.añadirPro(programasArchivo.get(i));
-    }
-    
-} catch (IOException e) {
-    vista.mensaje("No se pudo procesar el archivo: ");
-
-} catch (ArithmeticException e){
-    vista.mensaje(e.getMessage());  // Se añade a la cola
-}
- */
 archivos.leerarch();
 
  vista.mensaje("--------------Simulador de memoria RAM--------------");
