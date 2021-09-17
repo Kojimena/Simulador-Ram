@@ -11,18 +11,24 @@ public class Programas {
     private int tiempoejecucion;
     private int espacio;
 
+    //Constructor para la creación de nuevos programas
+    /**
+    * @params nombre programa, tiempo de ejecución del programa y espacio del programa
+    */
     public Programas(String nombre,int tiempoejecucion, int espacio){
 		this.nombre= nombre;
         this.tiempoejecucion = tiempoejecucion;
         this.espacio = espacio;
     }
 
+    //Constructor vacío
     public Programas(){
         nombre = "";
         tiempoejecucion= 0;
         espacio= 0;
     }
 
+    //método para usar en nuevos ciclos
     public boolean ejecutar(){
         boolean resultado;
 
@@ -30,14 +36,13 @@ public class Programas {
         if(tiempoejecucion == 0){
             resultado = true;  // finalizó su ejecución correctamente
         } else{
-            resultado = false;
+            resultado = false;// no finalizó su ejecución correctamente
         }
 
         return resultado;
     }
 
     /**
-    * @param null
     * @return nombre
     */
     public String getNombre() {
@@ -45,7 +50,6 @@ public class Programas {
     }
 
     /**
-    * @param null
     * @return tiempo
     */
     public int getTiempo() {
@@ -53,7 +57,6 @@ public class Programas {
     }
     
      /**
-    * @param null
     * @return espacio
     */
     public int getEspacio() {
@@ -64,7 +67,6 @@ public class Programas {
     @Override
     public String toString() {
         return   " " + nombre + " " + tiempoejecucion+ " " + espacio;
-        //return "Programas:" + "\nnombre: " + nombre + " \ntiempo ejecucion: " + tiempoejecucion + "\n espacio: " + espacio;
     }
 
 

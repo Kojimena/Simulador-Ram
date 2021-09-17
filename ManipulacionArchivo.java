@@ -50,6 +50,10 @@ public class ManipulacionArchivo {
     }
 
  
+    /**
+    * @return: String
+    * @throws: FileNotFoundException
+    **/ 
     public String leerarch(){
         /**
          * Funcion que permite leer el contenido del archivo
@@ -84,6 +88,10 @@ public class ManipulacionArchivo {
         }
     }
 
+    /**
+    * @return: programsArrayList
+    * @param: String
+    **/ 
     public ArrayList<Programas>manipulacion(String texto){
         ArrayList<Programas> programsArrayList = new ArrayList<Programas>();
         String[] parts = texto.split(",");

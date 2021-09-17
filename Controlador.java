@@ -1,10 +1,11 @@
 /**
 * @author: Karen Jimena Hernández Ortega
 * @version: 17-sep-21
-* Esta clase es el controlador principal del programa.
+* @file: Controlado.java 
+*Esta clase es el controlador principal del programa.
 **/
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.ArrayList; //Se importan clasess a usar
 
 public class Controlador {
 /**
@@ -16,7 +17,7 @@ public static void main(String[] args) throws IOException{
  
 Ram ram = new Ram();
 Programas program = new Programas();
-ManipulacionArchivo archivos = new ManipulacionArchivo("registros.txt");
+ManipulacionArchivo archivos = new ManipulacionArchivo("registros.txt"); //se crea el archivo
 
 
  int opcion;
@@ -35,6 +36,7 @@ ManipulacionArchivo archivos = new ManipulacionArchivo("registros.txt");
 	    switch(opcion)
 	    {
             case 0:
+            //Inicializar con archivos que ya existan
             try {
             ArrayList<Programas> pArchivo = archivos.manipulacion(archivos.leerarch());
                 for (int i = 0; i < pArchivo.size(); i++){
@@ -114,10 +116,12 @@ ManipulacionArchivo archivos = new ManipulacionArchivo("registros.txt");
             break;
 
             case 8:
+            //salir
             vista.mensaje("saliendo...");
                         System.exit(0);
             break; 
 
+        //Se le avisa al usuario que no esta ingresando una opción correcta
         default: vista.mensaje("-Opcion invalida, porfavor ingrese una opción valida-");   break;
         }
         opcion = vista.menu();

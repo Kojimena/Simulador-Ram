@@ -2,16 +2,23 @@
 /**
 * @author: Karen Jimena Hernández Ortega
 * @version: 17-sep-21
+* @file: Vista.java 
 * Esta clase es la vista del programa.Imprime resultados y pide datos.
 **/
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
+import java.util.InputMismatchException; //se importan clases a usar
 import java.util.Scanner;
 
 public class Vista {
-    Scanner scan = new Scanner(System.in);
+    Scanner scan = new Scanner(System.in); 
 
+    /**
+    * @param: null
+    * @return: opcion
+    * @throws: InputMissmatchException
+    * menú del programa
+    **/ 
     public int menu(){
 		int opcion;
                 System.out.println("0. Inicializar con archivo .txt");
@@ -38,10 +45,18 @@ public class Vista {
 		return opcion;
     }
 
+    /**
+    * @param: String
+    * imprime mensajes
+    **/ 
     public void mensaje(String mensaje){
         System.out.println(mensaje);
     }
 
+    /**
+    * @param: Arraylist<String>
+    * imprime mensajes en Arraylist de cadena
+    **/ 
     public void mensaje(ArrayList<String> mensajearray){
         for (int i = 0; i<mensajearray.size(); i++){
             System.out.println(mensajearray.get(i));
@@ -49,6 +64,9 @@ public class Vista {
         
     }
 
+    /**
+    * @return: nombre del programa
+    **/ 
     public String getNombre(){
         System.out.printf("\nIngrese el nombre del programa ");
 
@@ -57,6 +75,9 @@ public class Vista {
         return nombre;
     }
 
+    /**
+    * @return: espacio del programa
+    **/ 
     public int getEspacio(){
 
         System.out.printf("\nIngrese el espacio del programa ");
@@ -67,6 +88,9 @@ public class Vista {
         
     }
 
+    /**
+    * @return: Tiempo del programa
+    **/ 
     public int getTiempo(){
 
         System.out.printf("\nIngrese el tiempo del programa ");
@@ -76,6 +100,9 @@ public class Vista {
         return tiempo;
     }
 
+    /**
+    * @return: Tipo del programa
+    **/ 
     public String getTipo(){
 
         System.out.printf("\nIngrese el tipo de memoria RAM (SDR O DDR)");
@@ -85,15 +112,21 @@ public class Vista {
         return tipo;
     }
 
+    /**
+    * @return: Tamaño GB de memoria
+    **/ 
     public int getTamGB(){
 
-        System.out.printf("\nIngrese el tamaño de su memoria SDR: (4, 8, 12, 16, 32, 64)");
+        System.out.printf("\nIngrese el tamaño de su memoria SDR en GB, opciones:(4, 8, 12, 16, 32, 64)");
 
         int tamgb = scan.nextInt();
 
         return tamgb;
     }
 
+    /**
+    * @return: seguir
+    **/ 
     public int getAnswer(){
 
         System.out.printf("\n¿Quiere agregar más programas?\n 1.Si \n 2.No\n");
@@ -104,9 +137,12 @@ public class Vista {
         return seguir;
     }
 
+    /**
+    * @return: name
+    **/ 
     public String getPro(){
 
-        System.out.printf("\nIngrese el nombre del programa que busca");
+        System.out.printf("\nIngrese el nombre del programa que buscar");
 
         String name = scan.nextLine();
 
