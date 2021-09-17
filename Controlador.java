@@ -4,8 +4,6 @@
 * Esta clase es el controlador principal del programa.
 **/
 import java.io.IOException;
-//import java.lang.reflect.Array;
-//import java.util.ArrayList;
 import java.util.ArrayList;
 
 public class Controlador {
@@ -18,11 +16,24 @@ public static void main(String[] args) throws IOException{
  
 Ram ram = new Ram();
 Programas program = new Programas();
-//ArrayList<Programas> programas = new ArrayList<Programas>();
+ManipulacionArchivo archivos = new ManipulacionArchivo("registros.txt");
 
 
  int opcion;
 
+ // Ingreso de programas por medio de un archivo de texto
+ try {
+    ArrayList<Programas> programasArchivo = archivos.leer();
+    for (int i = 0; i < programasArchivo.size(); i++) {
+        ram.añadirPro(programasArchivo.get(i));
+    }
+    
+} catch (IOException e) {
+    vista.mensaje("No se pudo procesar el archivo: ");
+
+} catch (ArithmeticException e){
+    vista.mensaje(e.getMessage());  // Se añade a la cola
+}
  vista.mensaje("--------------Simulador de memoria RAM--------------");
  vista.mensaje("¿Qué desea hacer?");
  opcion = vista.menu();
@@ -99,7 +110,7 @@ Programas program = new Programas();
             break;
 
             case 7:
-            //ram.nuevoCiclo();
+            ram.ejecutarnuevoCiclo();
             //nuevo ciclo de reloj
             break;
 

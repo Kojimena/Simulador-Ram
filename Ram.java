@@ -47,14 +47,14 @@ public class Ram {
             for(int i= 0; i < sdr.size(); i++){
                 //System.out.println(sdr.get(i));
             }
-            System.out.println("------------------SDR-------------------");
+            //System.out.println("------------------SDR-------------------");
 
             for(int i= 0; i < sdr.size(); i++){
                 if(sdr.get(i) == null)
                 bloqueslibres++;
             }
-            System.out.println("Espacio libre"+ " "+ bloqueslibres + " " + "bloques");
-            System.out.println("Bloques programas"+" "+ bloquesnprograma + " " + "bloques");
+            //System.out.println("Espacio libre"+ " "+ bloqueslibres + " " + "bloques");
+            //System.out.println("Bloques programas"+" "+ bloquesnprograma + " " + "bloques");
             if(bloquesnprograma<= bloqueslibres){
                 for(int i= 0; i < sdr.size() && bloquesnprograma != 0; i++){
                     if (sdr.get(i) == null){
@@ -63,10 +63,10 @@ public class Ram {
                     
                     }
                 }
-                System.out.println(sdr);
+                //System.out.println(sdr);
             }else if (bloquesnprograma > bloqueslibres){
                 cola.add(programs);
-                System.out.println("cola"+ cola);
+                //System.out.println("cola"+ cola);
             }
             
         }else if ((sisdr) == false){
@@ -75,14 +75,14 @@ public class Ram {
             for(int i= 0; i < ddr.size(); i++){
                 //System.out.println(sdr.get(i));
             }
-            System.out.println("------------------DDR-------------------");
+            //System.out.println("------------------DDR-------------------");
 
             for(int i= 0; i < ddr.size(); i++){
                 if(ddr.get(i) == null)
                 bloqueslibres++;
             }
-            System.out.println("Espacio libre"+" " + bloqueslibres+ " " + "bloques");
-            System.out.println("Bloques programas"+ " " + bloquesnprograma+ " " + "bloques");
+            //System.out.println("Espacio libre"+" " + bloqueslibres+ " " + "bloques");
+            //System.out.println("Bloques programas"+ " " + bloquesnprograma+ " " + "bloques");
             if(bloquesnprograma<= bloqueslibres){
                 for(int i= 0; i < ddr.size() && bloquesnprograma != 0; i++){
                     if (ddr.get(i) == null){
@@ -91,10 +91,10 @@ public class Ram {
                     
                     }
                 }
-                System.out.println(ddr);
+                //System.out.println(ddr);
             }else if (bloquesnprograma > bloqueslibres){
                 cola.add(programs);
-                System.out.println("cola"+ cola);
+                //System.out.println("cola"+ cola);
             }
         }
     }
@@ -236,7 +236,7 @@ public class Ram {
                 // El programa ya finalizó su ejecución.
 
                 // Eliminación de los bloques de memoria
-                ArrayList<Programas> prog = new ArrayList<Programas>();
+                //ArrayList<Programas> prog = new ArrayList<Programas>();
                 Programas programaac = sdr.get(0);
                 int bloquesUsados = bloquesNecesarios(programaac);
                 for (int j = 0; j < bloquesUsados; j++) {
@@ -279,7 +279,7 @@ public class Ram {
                     // El programa ya finalizó su ejecución.
     
                     // Eliminación de los bloques de memoria
-                    ArrayList<Programas> prog = new ArrayList<Programas>();
+                    //ArrayList<Programas> prog = new ArrayList<Programas>();
                     Programas programaac = ddr.get(0);
                     int bloquesUsados = bloquesNecesarios(programaac);
                     for (int j = 0; j < bloquesUsados; j++) {

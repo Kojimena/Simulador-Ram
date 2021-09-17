@@ -1,7 +1,7 @@
 /**
  *
  * @author Karen Jimena Hernández Ortega
- * @file Vehiculo.java
+ * @file Programas.java
  * @version: 15-sep-21
  */
 

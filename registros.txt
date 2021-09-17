@@ -1,0 +1,5 @@
+Instagram,2,256
+Webwhatssap,6,64
+twitter,3,128
+Discord,7,384
+Numbers,1,64000
