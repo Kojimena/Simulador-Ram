@@ -13,40 +13,27 @@ public class Ram {
     private ArrayList<Programas> cola = new ArrayList<Programas>();
     private boolean sisdr;
     private int bloques; 
-    private Programas[] bloquesmem;
     Vista vista = new Vista();
 
 
     Ram(int tamGB ){
         this.sisdr = true;
         this.bloques= (tamGB * 1024)/64;
-        bloquesmem = new Programas[this.bloques];
         sdr = new ArrayList<Programas>(bloques);
         for(int i=0; i<this.bloques; i++){
             sdr.add(null);
         }
-        //*vista.mensaje(("####"));
-           // for (int i=0; i<sdr.size(); i++){
-          //  System.out.println(sdr.get(i));
-          //  }
-        //vista.mensaje(("##tamaño###"));
-           // System.out.println(sdr.size());
+
     }
 
     Ram(){
         this.sisdr = false;
         this.bloques= 64;
-        bloquesmem = new Programas[this.bloques];
         ddr = new ArrayList<Programas>(bloques);
         for(int i=0; i<this.bloques; i++){
             ddr.add(null);
         }
-        //vista.mensaje(("####"));
-            //for (int i=0; i<ddr.size(); i++){
-            //System.out.println(ddr.get(i));
-            //}
-        //vista.mensaje(("#####"));
-            //System.out.println(ddr.size());
+
     }
 
     public void añadirPro(Programas programs)throws ArithmeticException{
@@ -105,6 +92,9 @@ public class Ram {
                     }
                 }
                 System.out.println(ddr);
+            }else if (bloquesnprograma > bloqueslibres){
+                cola.add(programs);
+                System.out.println("cola"+ cola);
             }
         }
     }
@@ -121,7 +111,7 @@ public class Ram {
         }
 
         if (colaString.size()<=0){
-            System.out.println("No tiene programas en cola");
+            vista.mensaje("No tiene programas en cola");
         }
 
         return colaString;
@@ -169,6 +159,106 @@ public class Ram {
 
     }
 
+    public ArrayList<Programas>getEspacios(){
 
+        ArrayList<Programas> prog = new ArrayList<Programas>();
+        if ((sisdr) == true){
+            for(int i=0; i<sdr.size(); i++){
+                Programas estePrograma = sdr.get(i);
+                //System.out.println(estePrograma);
+
+                if(prog != null){
+                    if(!(prog.contains(estePrograma))){
+                    prog.add(estePrograma);
+                    }
+                }
+            }
+        }else if((sisdr) == false) {
+            for(int i=0; i<ddr.size(); i++){
+                Programas estePrograma = ddr.get(i);
+                //System.out.println(estePrograma);
+                if(prog != null){
+                    if(!(prog.contains(estePrograma))){
+                    prog.add(estePrograma);
+                }    }
+            }
+        }
+
+        return prog;
+
+    }
+
+    public ArrayList<String> getEstado() {
+        ArrayList<String> bloquesString = new ArrayList<String>();
+        if ((sisdr) == true){
+            for(int i=0; i<sdr.size(); i++){
+                Programas estePrograma = sdr.get(i);
+
+                if(estePrograma != null){
+                    String info = "Bloque num" + i + ": " + estePrograma.getNombre() + ", " + estePrograma.getEspacio() + ", " + estePrograma.getTiempo();
+                    bloquesString.add(info);
+                }else{
+                    String info = "Bloque num" + i + ": Vacio" ;
+                    bloquesString.add(info);
+                }
+
+            }
+        }else if((sisdr) == false) {
+            for(int i=0; i<ddr.size(); i++){
+                Programas estePrograma = ddr.get(i);
+
+                if(estePrograma != null){
+                    String info = "Bloque num" + i + ": " + estePrograma.getNombre() + ", " + estePrograma.getEspacio() + ", " + estePrograma.getTiempo();
+                    bloquesString.add(info);
+                }else{
+                    String info = "Bloque num" + i + ": Vacio" ;
+                    bloquesString.add(info);
+                }
+            }
+        }
+        return bloquesString;
+    }
+
+    public int bloquesNecesarios(Programas programas){ 
+        // cuantos bloques necesita un solo programa.       
+        int sizeMB = programas.getEspacio();  // Tamaño del programa en memoria
+        Double bloques = sizeMB / 64.0;
+        int bloquesNecesarios = (int)(Math.ceil(bloques));
+        
+        return bloquesNecesarios;
+    }
+    //public void nuevoCiclo(){
+       // ArrayList<Programas> prog = new ArrayList<Programas>();
+      //  if ((sisdr) == true){
+        //    for(int i=0; i<sdr.size(); i++){
+        //            prog.add(null);
+        //    }
+         //   sdr = prog;
+         //   System.out.println(sdr);
+        //}else if((sisdr) == false) {
+        //    for(int i=0; i<ddr.size(); i++){
+       //         prog.add(null);
+       // }
+       // vista.mensaje("Ciclo terminado");
+       // sdr = prog;
+       // }
+
+    //}
+
+    /**
+    *public void ejecutarnuevoCiclo(){
+        if (sdr.get(0) != null) { 
+            boolean ejecucionPrograma = sdr.get(0).ejecutar();
+            if (ejecucionPrograma){
+                // El programa ya finalizó su ejecución.
+
+                // Eliminación de los bloques de memoria
+                ArrayList<Programas> prog = new ArrayList<Programas>();
+                Programas programaac = sdr.get(0);
+                programaac.bloquesNecesarios();
+            }    
+        }
+        
+    }*/
 
 }

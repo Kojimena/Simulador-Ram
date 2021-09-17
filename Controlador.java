@@ -86,13 +86,20 @@ Programas program = new Programas();
 
             case 5:
             //conocer espacios
+            ArrayList<Programas> espaciosRam = ram.getEspacios();
+            for(int i=0; i<espaciosRam.size(); i++){
+                System.out.println(espaciosRam.get(i));
+            }
+            
             break;
 
             case 6:
             //estado memoria Ram
+            vista.mensaje(ram.getEstado());
             break;
 
             case 7:
+            //ram.nuevoCiclo();
             //nuevo ciclo de reloj
             break;
 

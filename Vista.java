@@ -19,7 +19,7 @@ public class Vista {
                 System.out.println("2. Ingresar Programas");
                 System.out.println("3. Cantidad de memoria RAM");
                 System.out.println("4. Mostrar Programas");
-                System.out.println("5. Conocer espacios de algún programa");
+                System.out.println("5. Conocer espacios de programas");
                 System.out.println("6. Estado memoria Ram");
                 System.out.println("7. Nuevo ciclo de reloj");
                 System.out.println("8. Salir");

@@ -23,6 +23,18 @@ public class Programas {
         espacio= 0;
     }
 
+    public boolean ejecutar(){
+        boolean resultado;
+
+        tiempoejecucion--;
+        if(tiempoejecucion == 0){
+            resultado = true;  // finalizó su ejecución correctamente
+        } else{
+            resultado = false;
+        }
+
+        return resultado;
+    }
 
     /**
     * @param null
