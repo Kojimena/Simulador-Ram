@@ -2,7 +2,7 @@
 * @author: Karen Jimena Hernández Ortega
 * @version: 17-sep-21
 * @file: Controlado.java 
-*Esta clase es el controlador principal del programa.
+*Esta clase controla el programa y se encarga de las operaciones
 **/
 import java.io.IOException;
 import java.util.ArrayList; //Se importan clasess a usar
