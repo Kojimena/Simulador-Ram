@@ -102,8 +102,63 @@ public class Ram {
                 }
 
             }else if (bloquesnprograma > bloqueslibres){
-                cola.add(programs); //sino se añade al array de cola
+                boolean siCabe = false;
+                while(siCabe != true){
+                    
+                    switch (ddr.size()) {
+                        case 64:
+                            this.bloques = 128;
+                            for (int i = 0; i < (128-64); i++) {
+                                ddr.add(null);
+                            }
+                            break;
+                        case 128:
+                            this.bloques = 192;
+                            for (int i = 0; i < (192-128); i++) {
+                                ddr.add(null);
+                            }
+                            break;
+                        case 192:
+                            this.bloques = 256;
+                            for (int i = 0; i < (256-192); i++) {
+                                ddr.add(null);
+                            }
+                            break;
+                        case 256:
+                            this.bloques = 512;
+                            for (int i = 0; i < (512-256); i++) {
+                                ddr.add(null);
+                            }
+                            break;
+                        case 512:
+                            this.bloques = 1024;
+                            for (int i = 0; i < (1024-512); i++) {
+                                ddr.add(null);
+                            }
+                            break;
+                        
+                        default:
+                            cola.add(programs); //sino se añade al array de cola
+                            siCabe = true;
+                            break;
+                    }
+                    int bloqueslibres2 = 0; 
+                    
+                    for(int i= 0; i < this.bloques; i++){
+                        if(ddr.get(i) == null)
+                        bloqueslibres2++;
+                    }
+                    if(bloqueslibres2 > bloquesnprograma){
+                        siCabe = true;
+                        for(int i= 0; i < this.bloques  && bloquesnprograma != 0; i++){
+                            if (ddr.get(i) == null){
+                                ddr.set(i, programs);
+                                bloquesnprograma--;                            
+                            }
+                        }
 
+                    }
+                }
             }
         }
     }
